@@ -1,0 +1,160 @@
+@import "./breakpoints/breakpoints.scss";
+@import "~bootstrap/scss/bootstrap";
+
+$background: #f4f3e7;
+$gray: rgb(75, 75, 75);
+$btnColor: #77cccc;
+$sweetgreen: #00473c;
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: $background;
+}
+
+.App {
+  text-align: center;
+
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+/* navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 50px 30px 50px;
+  font-size: 20px;
+  color: $gray;
+  border-bottom: $gray solid 1px;
+  gap: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  .logo {
+    @include media("<=longNav") {
+      display: none;
+    }
+  }
+
+  .navItems {
+    display: flex;
+    gap: 20px;
+    .navItem:hover {
+      color: black;
+      cursor: pointer;
+    }
+
+    @include media("<=shortNav") {
+      display: none;
+    }
+  }
+
+  .dropdown {
+    display: none;
+    .dropdown-toggle {
+      background: none;
+      color: #000 !important;
+      border: solid black 2px;
+    }
+
+    @include media("<=shortNav") {
+      display: block;
+    }
+  }
+
+  .navRight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    .cart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .cartImg {
+        width: 35px;
+      }
+      :hover {
+        cursor: pointer;
+      }
+    }
+
+    .authBtn:hover {
+      color: black;
+      cursor: pointer;
+    }
+  }
+}
+
+// Homepage
+.home {
+  padding: 150px 80px;
+  display: flex;
+  gap: 40px;
+  .landingLeft {
+    width: 50%;
+    .landingImg {
+      border-radius: 20px;
+      width: 100%;
+    }
+  }
+
+  .landingRight {
+    width: 50%;
+    text-align: left;
+    font-size: 40px;
+  }
+}
+
+// auth page
+
+.authPage {
+  padding-top: 200px;
+  display: flex;
+  justify-content: center;
+  gap: 120px;
+  .welcomeText {
+    font-size: 30px;
+  }
+
+  .formContainer {
+    text-align: left;
+
+    h1 {
+      font-size: 70px;
+    }
+
+    p {
+      font-size: 20px;
+      font-weight: 100;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      padding-top: 30px;
+      input {
+        border: none;
+        outline: 0;
+        border-bottom: solid 1px $gray;
+        height: 50px;
+        width: 300px;
+        font-size: 20px;
+        padding-left: 10px;
+      }
+
+      button {
+        height: 50px;
+        margin: 20px 0;
+        border-radius: 50px;
+        color: white;
+        background-color: #00473c;
+      }
+    }
+  }
+}
