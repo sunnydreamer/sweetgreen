@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 // ADDITIONAL IMPORTS
 import { signUp } from "../utilities/users-service";
+import { Link } from "react-router-dom";
 
 // CREATE COMPONENT
 const SignUpForm = ({ setUser }) => {
@@ -53,20 +54,24 @@ const SignUpForm = ({ setUser }) => {
       console.log(user);
       setUser(user.data);
     } catch (error) {
+      console.log(error);
       setError("Sign Up Failed - Try Again");
     }
   };
-  // Reder component
+
   return (
     <div>
-      <div className="form-container">
-        <form
-          autoComplete="off"
-          onSubmit={(e) => {
-            return handleFormSubmission(e);
-          }}
-        >
-          <label>Name</label>
+      <div
+        className="form-container"
+        onSubmit={(e) => {
+          return handleFormSubmission(e);
+        }}
+      >
+        <h1>Sign Up </h1>
+        <p>
+          Already have an account? <Link to="/login">Log In</Link>
+        </p>
+        <form autoComplete="off">
           <input
             type="text"
             name="name"
@@ -75,8 +80,8 @@ const SignUpForm = ({ setUser }) => {
             }}
             value={name}
             required
+            placeholder="Name"
           />
-          <label>Email</label>
           <input
             type="email"
             name="email"
@@ -85,8 +90,8 @@ const SignUpForm = ({ setUser }) => {
             }}
             value={email}
             required
+            placeholder="Email"
           />
-          <label>Password</label>
           <input
             type="password"
             name="password"
@@ -95,8 +100,8 @@ const SignUpForm = ({ setUser }) => {
             }}
             value={password}
             required
+            placeholder="Password"
           />
-          <label>Confirm</label>
           <input
             type="password"
             name="confirm"
@@ -105,13 +110,16 @@ const SignUpForm = ({ setUser }) => {
             }}
             value={confirm}
             required
+            placeholder="Confirm Password"
           />
+
           <button type="submit" disabled={disable}>
             SIGN UP
           </button>
         </form>
       </div>
-      <p className="error-message">&nbsp;{error}</p>
+
+      <p className="error-message">{error}</p>
     </div>
   );
 };

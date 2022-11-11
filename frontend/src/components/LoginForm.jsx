@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 // ADDITIONAL IMPORTS
-import { login } from "./../utilities/users-service";
+import { login } from "../utilities/users-service";
 import { Link } from "react-router-dom";
 
 // CREATE COMPONENT
@@ -71,10 +71,7 @@ const LoginForm = ({ setUser }) => {
           <button type="submit">LOG IN</button>
         </form>
       </div>
-      <p>
-        Forgot Password?
-        <p />
-      </p>
+      <p>Forgot Password?</p>
       <p className="error-message">{error}</p>
     </div>
   );

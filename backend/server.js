@@ -16,8 +16,9 @@ const dotenv = require("dotenv");
 // IMPORT MONGOOSE TO CONNECT TO OUR DATABASE
 const mongoose = require("mongoose");
 
-// IMPORT USER ROUTER
+// IMPORT ROUTERS
 const userRouter = require("./routes/api/users");
+const dishRouter = require("./routes/api/dishes");
 
 // Connect to our config file
 dotenv.config();
@@ -52,6 +53,7 @@ app.use(express.json());
 // });
 
 app.use("/api/users", userRouter);
+app.use("/api/dishes", dishRouter);
 
 app.all("*", (request, response) => {
   response.send("Undefined route");

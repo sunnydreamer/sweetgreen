@@ -12,10 +12,7 @@ const LogInPage = ({ setUser }) => {
     <div className="authPage">
       <div className="welcomeContainer">
         <img src={welcomePic} alt="" className="welcomeImg" />
-        <div className="welcomeText">Welcome to the sweetlife</div>
       </div>
-      {/* 
-      <SignUpForm setUser={setUser} /> */}
       <div className="formContainer">
         <LoginForm setUser={setUser} />
       </div>
