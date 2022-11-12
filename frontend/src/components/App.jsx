@@ -12,25 +12,39 @@ import CategoryPage from "../pages/CategoryPage";
 import ShowPage from "../pages/ShowPage";
 import Navbar from "./Navbar";
 import { getUser } from "../utilities/users-service";
+import CheckoutPage from "../pages/CheckoutPage";
 
 // CREATE COMPONENT
 const App = () => {
   // Create a variable to hold the state of our component
   const [user, setUser] = useState(getUser());
+  const [cart, setCart] = useState({});
   const [page, setPage] = useState(false);
+  console.log(cart);
 
   return (
     <main className="App">
-      <Navbar user={user} setUser={setUser} setPage={setPage} page={page} />
+      <Navbar
+        user={user}
+        setUser={setUser}
+        setPage={setPage}
+        page={page}
+        cart={cart}
+      />
 
       <>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/login" element={<LogInPage setUser={setUser} />} />
           <Route path="/signup" element={<SignUpPage setUser={setUser} />} />
           <Route path="/:category" element={<CategoryPage page={page} />} />
-
-          <Route path="/:category/:id" element={<ShowPage />} />
+          <Route
+            path="/:category/:id"
+            element={<ShowPage cart={cart} setCart={setCart} />}
+            setCart={setCart}
+            cart={cart}
+          />
         </Routes>
       </>
     </main>

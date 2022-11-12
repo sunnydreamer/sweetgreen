@@ -25,11 +25,13 @@ const userSchema = new mongoose.Schema(
       required: [true, "Password is a required field"],
       select: false,
     },
+    cart: { type: Object, default: {} },
   },
   {
     timestamps: true,
     toObject: { virtuals: true },
     toJSON: { virtuals: true },
+    minimize: false,
   }
 );
 

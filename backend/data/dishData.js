@@ -8,7 +8,6 @@ exports.data = [
       "Chopped romaine, spring mix, roasted sweet potato, toasted almonds, apples, roasted brussels sprouts, blackened chicken, cranberry maple vinaigrette",
     cal: 485,
     price: 12.95,
-    ingredients: { "chopped romaine": 1, "spring mix": 1 },
   },
   {
     name: "Curry Cauliflower",
@@ -19,7 +18,6 @@ exports.data = [
       "Warm quinoa, arugula, cilantro, shredded cabbage, raisins, blackened chicken, curry roasted cauliflower, sweetgreen hot sauce, peppercorn tahina dressing",
     cal: 525,
     price: 12.95,
-    ingredients: { "chopped romaine": 1, "spring mix": 1 },
   },
   {
     name: "Hot Honey Chicken Plate",
@@ -30,7 +28,6 @@ exports.data = [
       "Warm quinoa, toasted almonds, blackened chicken, hot roasted sweet potatoes, kale-cabbage slaw, hot honey sauce",
     cal: 750,
     price: 12.95,
-    ingredients: { "chopped romaine": 1, "spring mix": 1 },
   },
   {
     name: "Sweet Balsamic Brussels",
@@ -41,7 +38,6 @@ exports.data = [
       "Warm wild rice, baby spinach, basil, toasted almonds, raw carrots, shaved parmesan, roasted brussels sprouts, warm portobello mix, balsamic vinegar, extra virgin olive oil, fresh lemon squeeze",
     cal: 600,
     price: 12.95,
-    ingredients: { "chopped romaine": 1, "spring mix": 1 },
   },
   {
     name: "Harvest Bowl",
@@ -52,7 +48,6 @@ exports.data = [
       "Shredded kale, warm wild rice, roasted sweet potato, toasted almonds, apples, goat cheese, roasted chicken, balsamic vinaigrette",
     cal: 685,
     price: 11.95,
-    ingredients: { "chopped romaine": 1, "spring mix": 1 },
   },
   {
     name: "Crispy Rice Bowl",
@@ -63,7 +58,6 @@ exports.data = [
       "Arugula, warm wild rice, cilantro, cucumber, shredded cabbage, toasted almonds, crispy rice, raw carrots, blackened chicken, fresh lime squeeze, spicy cashew dressing",
     cal: 600,
     price: 12.45,
-    ingredients: { "chopped romaine": 1, "spring mix": 1 },
   },
   {
     name: "Chicken Pesto Parm",
@@ -74,7 +68,6 @@ exports.data = [
       "Warm quinoa, baby spinach, spicy broccoli, tomato, za'atar breadcrumbs, roasted chicken, shaved parmesan, pesto vinaigrette, sweetgreen hot sauce",
     cal: 525,
     price: 12.45,
-    ingredients: { "chopped romaine": 1, "spring mix": 1 },
   },
 
   {
@@ -86,6 +79,5 @@ exports.data = [
       "Chopped romaine, spring mix, red onion, shredded cabbage, tomato, tortilla chips, avocado, roasted chicken, fresh lime squeeze, lime cilantro jalapeno vinaigrette",
     cal: 515,
     price: 11.95,
-    ingredients: { "chopped romaine": 1, "spring mix": 1 },
   },
 ];

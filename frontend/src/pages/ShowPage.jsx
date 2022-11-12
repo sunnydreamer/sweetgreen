@@ -2,15 +2,27 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getOneDish } from "../utilities/dishes-service";
 
-function ShowPage() {
+function ShowPage({ setCart, cart }) {
   const { id } = useParams();
   const { category } = useParams();
   const [dish, setDish] = useState({});
+  const [quantity, setQuantity] = useState(1);
 
   const getDish = async (e) => {
     const onedish = await getOneDish(category, id);
     setDish(onedish.data.dishes[0]);
   };
+
+  const handleMinus = async (e) => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const handlePlus = async (e) => {
+    setQuantity(quantity + 1);
+  };
+
   useEffect(() => {
     getDish();
   }, []);
@@ -25,19 +37,51 @@ function ShowPage() {
         </div>
         <div className="details">
           <p>{dish.description}</p>
-          <div className="detailTitle">Dressing</div>
-          <hr />
-          <div className="detailTitle">Cranberry Maple Vinaigrette</div>
-          <hr />
-          <div className="detailTitle">Add bread (100 cal)</div>
-          <hr />
-          <div className="detailTitle">Quantity</div>
+          <div className="detail">
+            <div className="detailTitle">Dressing</div>
+            <hr />
+          </div>
+
+          <div className="detail">
+            <div className="detailTitle">Cranberry Maple Vinaigrette</div>
+            <hr />
+          </div>
+
+          <div className="detail">
+            <div className="detailTitle">Add bread (100 cal)</div>
+            <hr />
+          </div>
+
+          <div className="detail" id="quantity">
+            <div className="detailTitle">Quantity </div>
+            <div className="detalContent">
+              <div className="minus" onClick={handleMinus}>
+                -
+              </div>
+              <div className="count">{quantity}</div>
+              <div className="plus" onClick={handlePlus}>
+                +
+              </div>
+            </div>
+          </div>
         </div>
         <div className="buttons">
           <div className="btn" id="customize">
             Customize
           </div>
-          <div className="btn" id="cart">
+
+          <div
+            className="btn"
+            id="cart"
+            onClick={() => {
+              if (cart[dish._id] !== undefined) {
+                setCart({ ...cart, [dish._id]: cart[dish._id] + quantity });
+              } else {
+                setCart({ ...cart, [dish._id]: quantity });
+              }
+              console.log(cart);
+            }}
+          >
             Add to Bag
           </div>
         </div>

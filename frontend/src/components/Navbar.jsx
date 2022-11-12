@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Dropdown from "react-bootstrap/Dropdown";
 
 // CREATE COMPONENT
-const Navbar = ({ user, setUser, setPage, page }) => {
+const Navbar = ({ user, setUser, setPage, page, cart }) => {
   // console.log(user);
   // Create a function responsible for loggin the user out
   const handleLogOut = () => {
@@ -93,12 +93,19 @@ const Navbar = ({ user, setUser, setPage, page }) => {
 
       <div className="navRight">
         <div className="cart">
-          <img
-            className="cartImg"
-            src="https://webiconspng.com/wp-content/uploads/2016/11/bag_basket_buy_cart_luggage_shopping_suitcase_icon_1540167.png"
-            alt=""
-          />
-          <div className="cartCount">0</div>
+          <Link
+            style={{ textDecoration: "none", color: "black" }}
+            to="/checkout"
+          >
+            <img
+              className="cartImg"
+              src="https://webiconspng.com/wp-content/uploads/2016/11/bag_basket_buy_cart_luggage_shopping_suitcase_icon_1540167.png"
+              alt=""
+            />
+          </Link>
+          <div className="cartCount">
+            {Object.values(cart).reduce((a, b) => a + b, 0)}
+          </div>
         </div>
         <span style={{ paddingLeft: "10px" }}>
           {user ? user.newUser?.name || user.currentUser?.name : ""}

@@ -250,6 +250,53 @@ nav {
         color: $gray;
         margin-bottom: 60px;
       }
+
+      #quantity {
+        display: flex;
+        justify-content: space-between;
+
+        .detalContent {
+          display: flex;
+          gap: 10px;
+          justify-content: center;
+          align-items: center;
+
+          .minus {
+            width: 40px;
+            height: 40px;
+            border: solid 1px $gray;
+            color: $gray;
+
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .minus:hover {
+            border: black 1px solid;
+            color: black;
+            cursor: pointer;
+          }
+
+          .plus {
+            width: 40px;
+            height: 40px;
+            border: solid 1px $gray;
+
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .plus:hover {
+            border: black 1px solid;
+            color: black;
+            cursor: pointer;
+          }
+        }
+      }
     }
 
     .buttons {
@@ -289,5 +336,46 @@ nav {
   .showPageRight {
     width: 60vw;
     background-color: $card;
+  }
+}
+
+//  checkout page
+.checkout {
+  height: 100%;
+  padding: 150px 0;
+  background-color: $card;
+
+  .pageTitle {
+    font-size: 45px;
+  }
+  form {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 40px;
+    .formLeft {
+      width: 500px;
+      height: 1000px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      .pickup {
+        height: 300px;
+        background-color: $background;
+        border-radius: 15px;
+      }
+      .payment {
+        height: 300px;
+        background-color: $background;
+        border-radius: 15px;
+      }
+    }
+
+    .formRight {
+      width: 500px;
+      height: 1000px;
+      background-color: $background;
+      border-radius: 15px;
+    }
   }
 }

@@ -22,9 +22,12 @@ const dishSchema = new mongoose.Schema({
     required: true,
   },
 
-  ingredients: {
-    type: Object,
-  },
+  ingredients: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "AddOn",
+    },
+  ],
 });
 
 const Dish = mongoose.model("Dish", dishSchema);

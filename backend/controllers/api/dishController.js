@@ -6,10 +6,13 @@ exports.seedDish = async (request, response) => {
   try {
     const newDish = await Dish.insertMany(dishData.data);
 
+    const newAddOn = await Dish.find().populate("ingredients");
+
     response.status(201).json({
       status: "success",
       data: {
         newDish,
+        newAddOn,
       },
     });
   } catch (error) {
