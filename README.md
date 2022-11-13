@@ -1,70 +1,115 @@
-# Getting Started with Create React App
+# Sweetgreen Full Mern APP
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An online food ordering system built with the MERN stack.
 
-## Available Scripts
+Design inpiration by [Sweetgreen](https://www.sweetgreen.com/).
 
-In the project directory, you can run:
+## Tech/framework used
 
-### `npm start`
+<b>Built with:</b>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React JS
+- MongoDB
+- SCSS
+- Boostrap
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+This application provides users with the following features:
+<br/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Authentication using **JWT Tokens**
+- Customers can browse, add products to their cart, and purchase the meals
+- Admin portal enables admin accounts to create, update and delete the dishes
 
-### `npm run build`
+## Screenshots
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Home Page
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Home Page](https://i.imgur.com/rnFG0xs.jpg)
+<br/><br/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Category Page
 
-### `npm run eject`
+![Category Page](https://i.imgur.com/qIs9dHq.jpg)
+<br/><br/>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Product Show Page
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Product Show Page](https://i.imgur.com/sJ8q6eo.jpg)
+<br/><br/>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### Shopping Cart
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![Shopping Cart](https://i.imgur.com/H6tS8eA.jpg)
 
-## Learn More
+## Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Make sure [Node and npm](https://nodejs.org/en/download/) are installed
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ```
+   $ node --version
+   v16.16.0
 
-### Code Splitting
+   $ npm --version
+   8.11.0
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Clone the repo, type
 
-### Analyzing the Bundle Size
+   ```
+   $ git clone {the url to the GitHub repo}
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+3. cd into the root folder and install the required dependencies
 
-### Making a Progressive Web App
+   ```
+   $ npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+4. cd into the frontend folder and install the required dependencies
 
-### Advanced Configuration
+   ```
+   $ .../frontend> npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+5. Create .env file in root folder
 
-### Deployment
+   ```
+   $ touch .env
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   In your .env file, type
 
-### `npm run build` fails to minify
+   ```
+   DATABASE= {your mongoDB database link}
+   // replace the password with <PASSWORD>
+   DATABASE_PASSWORD= {your mongoDB database password}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   JWT_SECRET_KEY={your jwt secret key}
+   JWT_EXPIRATION_DATE=90d
+   ```
+
+6. To run the React Project
+
+   ```
+   $ npm run dev
+   ```
+
+## Unsolved Problem
+
+- **Order Model Implementation** When customers place orders, the order information will be created and stored in the order database. Orders information can be reviewed and updated by admin accounts.
+
+- **Search Bar** Import search bar that enables customers to find their dishes ASAP.
+
+- **Customized Add-Ons** Customers can customize their own bowls.
+
+## Contribute
+
+When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+MIT © [sunnydreamer](https://github.com/sunnydreamer)
