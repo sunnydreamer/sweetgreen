@@ -32,8 +32,8 @@ function CategoryPage({ page, user, setPage }) {
   const dishList = dishes.list
     ? dishes.list.map((element, i) => {
         return (
-          <>
-            <div className="itemCard" key={i}>
+          <div key={i}>
+            <div className="itemCard">
               <Link
                 style={{ textDecoration: "none", color: "black" }}
                 to={`/${category}/${element._id}`}
@@ -61,7 +61,7 @@ function CategoryPage({ page, user, setPage }) {
                 <></>
               )}
             </div>
-          </>
+          </div>
         );
       })
     : [];

@@ -64,3 +64,17 @@ export async function deleteDish(id) {
     throw new Error("Invalid Create");
   }
 }
+
+export async function updateDish(category, id, dishData) {
+  const res = await fetch(`${BASE_URL}/${category}/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(dishData),
+  });
+
+  if (res.ok) {
+    return res;
+  } else {
+    throw new Error("Invalid Create");
+  }
+}

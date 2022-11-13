@@ -132,7 +132,6 @@ function CheckoutPage({ cart, setCart, page, setPage }) {
           <div className="orderInfo">
             {/* loop start */}
             {dishList}
-
             {/* loop start */}
             <hr />
 

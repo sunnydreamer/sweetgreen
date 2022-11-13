@@ -69,10 +69,40 @@ const Navbar = ({ user, setUser, setPage, page, cart }) => {
             Salads
           </Link>
         </div>
-        <div className="navItem">Custom</div>
-        <div className="navItem">Sides</div>
-        <div className="navItem">Dessert</div>
-        <div className="navItem">Beverages</div>
+
+        <div className="navItem">
+          <Link
+            to="/sides"
+            style={{ textDecoration: "none", color: "black" }}
+            onClick={() => {
+              page === true ? setPage(false) : setPage(true);
+            }}
+          >
+            Sides
+          </Link>
+        </div>
+        <div className="navItem">
+          <Link
+            to="/dessert"
+            style={{ textDecoration: "none", color: "black" }}
+            onClick={() => {
+              page === true ? setPage(false) : setPage(true);
+            }}
+          >
+            Dessert
+          </Link>
+        </div>
+        <div className="navItem">
+          <Link
+            to="/beverages"
+            style={{ textDecoration: "none", color: "black" }}
+            onClick={() => {
+              page === true ? setPage(false) : setPage(true);
+            }}
+          >
+            Beverages
+          </Link>
+        </div>
       </div>
       <div className="dropdown">
         <Dropdown>
@@ -84,10 +114,10 @@ const Navbar = ({ user, setUser, setPage, page, cart }) => {
             <Dropdown.Item href="#/action-1">Featured</Dropdown.Item>
             <Dropdown.Item href="#/action-2">Warm Bowls</Dropdown.Item>
             <Dropdown.Item href="#/action-3">Salads</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Custom</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Sides</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Dessert</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Beverages</Dropdown.Item>
+
+            <Dropdown.Item href="#/action-4">Sides</Dropdown.Item>
+            <Dropdown.Item href="#/action-5">Dessert</Dropdown.Item>
+            <Dropdown.Item href="#/action-6">Beverages</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </div>

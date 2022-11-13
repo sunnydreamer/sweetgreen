@@ -63,6 +63,27 @@ exports.deleteDish = async (request, response) => {
   }
 };
 
+exports.updateDish = async (request, response) => {
+  try {
+    const updatedDish = await Dish.findByIdAndUpdate(
+      request.params.id,
+      request.body
+    );
+
+    response.status(201).json({
+      status: "success",
+      data: {
+        updatedDish,
+      },
+    });
+  } catch (error) {
+    response.status(500).json({
+      status: "error",
+      error: error,
+    });
+  }
+};
+
 exports.getAllDishes = async (request, response) => {
   try {
     const dishes = await Dish.find();

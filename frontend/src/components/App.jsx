@@ -14,6 +14,8 @@ import NewPage from "../pages/NewPage";
 import Navbar from "./Navbar";
 import { getUser } from "../utilities/users-service";
 import CheckoutPage from "../pages/CheckoutPage";
+import UpdatePage from "../pages/UpdatePage";
+import Footer from "./Footer";
 
 // CREATE COMPONENT
 const App = () => {
@@ -63,13 +65,14 @@ const App = () => {
                 setCart={setCart}
                 setPage={setPage}
                 page={page}
+                user={user}
               />
             }
-            setCart={setCart}
-            cart={cart}
           />
+          <Route path="/:category/:id/update" element={<UpdatePage />} />
         </Routes>
       </>
+      <Footer />
     </main>
   );
 };

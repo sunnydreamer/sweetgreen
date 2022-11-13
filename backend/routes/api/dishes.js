@@ -14,6 +14,7 @@ router.route("/").post(dishController.createOneDish);
 router.route("/:id").delete(dishController.deleteDish);
 router.route("/:category").get(dishController.getCategory);
 router.route("/:category/:id").get(dishController.getOneDish);
+router.route("/:category/:id").put(dishController.updateDish);
 
 // EXPORT ROUTER TO BE USED IN OTHER PARTS OF OUR APPLICATION
 module.exports = router;

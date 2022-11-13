@@ -28,3 +28,10 @@ export async function deleteDish(id) {
   // Baby step by returning whatever is sent back by the server
   return response;
 }
+
+export async function updateDish(category, id, dishData) {
+  // Make the network request
+  const response = await dishesAPI.updateDish(category, id, dishData);
+  // Baby step by returning whatever is sent back by the server
+  return response;
+}

@@ -1,18 +1,28 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { createOneDish } from "../utilities/dishes-service";
+import React, { useState, useEffect } from "react";
+import { updateDish, getOneDish } from "../utilities/dishes-service";
 import { useParams, useNavigate } from "react-router-dom";
 
-function NewPage() {
-  const categoryParam = useParams().category;
+function UpdatePage() {
+  //set up navigate
   const navigate = useNavigate();
 
-  const [name, setName] = useState("");
-  const [picture, setPicture] = useState("");
+  // get params
+  const categoryParam = useParams().category;
+  const idParam = useParams().id;
+
+  //get the dish info
+  const [dish, setDish] = useState({});
+  const getDish = async (e) => {
+    const onedish = await getOneDish(category, idParam);
+    setDish(onedish.data.dishes[0]);
+  };
+
+  const [name, setName] = useState(dish.name);
+  const [picture, setPicture] = useState(dish.picture);
   const [category, setCategory] = useState(categoryParam);
-  const [description, setDescription] = useState("");
-  const [cal, setCal] = useState(0);
-  const [price, setPrice] = useState(0);
+  const [description, setDescription] = useState(dish.description);
+  const [cal, setCal] = useState(dish.cal);
+  const [price, setPrice] = useState(dish.price);
   const [error, setError] = useState("");
 
   const handleNameChange = (e) => {
@@ -57,19 +67,20 @@ function NewPage() {
       const formData = { ...state };
       delete formData["error"];
 
-      console.log("formData is");
-      console.log(formData);
-
       // Send the data to our backend
-      const newDish = await createOneDish(formData);
+      const newDish = await updateDish(categoryParam, idParam, formData);
 
       // Log the data to the console
-      navigate(`/${categoryParam}`);
+      navigate(`/${category}/${idParam}`);
     } catch (error) {
       console.log(error);
       setError(error);
     }
   };
+  // useEffect
+  useEffect(() => {
+    getDish();
+  }, []);
   return (
     <div className="newPage">
       <div
@@ -78,7 +89,7 @@ function NewPage() {
           return handleFormSubmission(e);
         }}
       >
-        <h1>Add New Dish </h1>
+        <h1>Update Dish</h1>
 
         <form autoComplete="off">
           <div className="formItem">
@@ -89,9 +100,8 @@ function NewPage() {
               onChange={(e) => {
                 return handleNameChange(e);
               }}
-              value={name}
+              defaultValue={dish.name}
               required
-              placeholder="Name"
               className="formItemContent"
             />
           </div>
@@ -103,7 +113,7 @@ function NewPage() {
               onChange={(e) => {
                 return handlePictureChange(e);
               }}
-              value={picture}
+              defaultValue={dish.picture}
               placeholder="Picture Link"
               className="formItemContent"
             />
@@ -214,10 +224,8 @@ function NewPage() {
               onChange={(e) => {
                 return handleDescriptionChange(e);
               }}
-              value={description}
-              placeholder="Description"
+              defaultValue={dish.description}
               className="formItemContent"
-              id="descriptionInput"
             />
           </div>
           <div className="formItem">
@@ -228,9 +236,8 @@ function NewPage() {
               onChange={(e) => {
                 return handleCalChange(e);
               }}
-              value={cal}
+              defaultValue={dish.cal}
               required
-              placeholder="Cal"
               min="0"
               className="formItemContent"
             />
@@ -243,9 +250,8 @@ function NewPage() {
               onChange={(e) => {
                 return handlePriceChange(e);
               }}
-              value={price}
+              defaultValue={dish.price}
               required
-              placeholder="Confirm Password"
               min="0"
               className="formItemContent"
             />
@@ -260,4 +266,4 @@ function NewPage() {
   );
 }
 
-export default NewPage;
+export default UpdatePage;

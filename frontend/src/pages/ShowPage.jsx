@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { getOneDish } from "../utilities/dishes-service";
+import { useParams, useNavigate } from "react-router-dom";
+import { getOneDish, deleteDish } from "../utilities/dishes-service";
 
-function ShowPage({ setCart, cart, page, setPage }) {
+function ShowPage({ setCart, cart, page, setPage, user }) {
   const { id } = useParams();
   const { category } = useParams();
+  const navigate = useNavigate();
   const [dish, setDish] = useState({});
   const [quantity, setQuantity] = useState(1);
 
@@ -66,36 +67,60 @@ function ShowPage({ setCart, cart, page, setPage }) {
           </div>
         </div>
         <div className="buttons">
-          <div className="btn" id="customize">
-            Customize
-          </div>
-
-          <div
-            className="btn"
-            id="cart"
-            onClick={() => {
-              if (cart[dish._id] !== undefined) {
-                setCart((cart) => {
-                  cart[dish._id]["quantity"] += quantity;
-                  return cart;
-                });
-                page === true ? setPage(false) : setPage(true);
-              } else {
-                setCart({
-                  ...cart,
-                  [dish._id]: {
-                    id: dish._id,
-                    name: dish.name,
-                    quantity: quantity,
-                    img: dish.picture,
-                    price: dish.price,
-                  },
-                });
-              }
-            }}
-          >
-            Add to Bag
-          </div>
+          {user && user.currentUser.isAdmin ? (
+            <div
+              className="btn"
+              id="edit"
+              onClick={() => {
+                navigate(`/${category}/${id}/update`);
+              }}
+            >
+              Edit
+            </div>
+          ) : (
+            <div className="btn" id="customize">
+              Customize
+            </div>
+          )}
+          {user && user.currentUser.isAdmin ? (
+            <div
+              className="btn"
+              id="delete"
+              onClick={() => {
+                deleteDish(id);
+                navigate(`/${category}`);
+              }}
+            >
+              Delete
+            </div>
+          ) : (
+            <div
+              className="btn"
+              id="cart"
+              onClick={() => {
+                if (cart[dish._id] !== undefined) {
+                  setCart((cart) => {
+                    cart[dish._id]["quantity"] += quantity;
+                    return cart;
+                  });
+                  page === true ? setPage(false) : setPage(true);
+                } else {
+                  setCart({
+                    ...cart,
+                    [dish._id]: {
+                      id: dish._id,
+                      name: dish.name,
+                      quantity: quantity,
+                      img: dish.picture,
+                      price: dish.price,
+                    },
+                  });
+                }
+              }}
+            >
+              Add to Bag
+            </div>
+          )}
         </div>
       </div>
       <div className="showPageRight">
