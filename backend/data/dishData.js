@@ -35,7 +35,7 @@ exports.data = [
       "https://res.cloudinary.com/sweetgreen/image/fetch/f_auto,q_auto:good/dpr_1/c_crop,w_0.66,h_0.66/w_1000/https://res.cloudinary.com/sweetgreen/image/upload/v1661549636/gravy/production/Gravy::MasterProduct/2022_0705_sweet_balsamic_brussels_three_quarter_transparent_diz9zc.png",
     category: "featured",
     description:
-      "Warm wild rice, baby spinach, basil, toasted almonds, raw carrots, shaved parmesan, roasted brussels sprouts, warm portobello mix, balsamic vinegar, extra virgin olive oil, fresh lemon squeeze",
+      "Warm wild rice, baby spinach, basil, toasted almonds, raw carrots, warm portobello mix, balsamic vinegar, extra virgin olive oil, fresh lemon squeeze",
     cal: 600,
     price: 12.95,
   },

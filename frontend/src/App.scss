@@ -99,6 +99,8 @@ nav {
   padding: 150px 80px;
   display: flex;
   gap: 40px;
+  min-height: 100vh;
+  height: 100%;
   .landingLeft {
     width: 50%;
     .landingImg {
@@ -168,8 +170,10 @@ nav {
 // categories page
 
 .categoryPage {
-  padding-top: 130px;
-  height: 100vh;
+  padding: 130px 0;
+  min-height: 100vh;
+  height: 100%;
+
   .pageTitle {
     margin-left: 40px;
     font-size: 40px;
@@ -186,12 +190,11 @@ nav {
     .itemCard {
       background-color: $card;
       width: 342px;
-      height: 470px;
+      height: 480px;
       border-radius: 10px;
       padding: 25px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
 
       .itemImgContainer {
@@ -205,19 +208,51 @@ nav {
         margin: 10px;
       }
 
+      .itemDescription {
+        min-height: 96px;
+      }
+
       .infoContainer {
         border: solid 1px black;
         border-radius: 5px;
         width: 120px;
-        display: flex;
-        justify-content: space-around;
-        margin: 20px 0;
+        // display: flex;
+        // justify-content: space-around;
+        margin: auto;
+        margin-top: 20px;
+      }
+
+      .deleteBtn {
+        color: darkred;
+        margin: 8px;
+        text-decoration: underline;
+        z-index: 100;
+        padding: 3px 10px;
+        border-radius: 6px;
+      }
+      .deleteBtn:hover {
+        background-color: darkred;
+        color: white;
+        z-index: 100;
       }
     }
 
     :hover {
       background-color: $hoverCard;
       cursor: pointer;
+    }
+
+    #addDish {
+      align-items: center;
+      justify-content: center;
+
+      .itemName {
+        font-size: 25px;
+      }
+
+      .addImg {
+        width: 50px;
+      }
     }
   }
 }
@@ -244,6 +279,7 @@ nav {
       font-size: 21px;
       padding: 5px;
       margin-top: 35px;
+      margin-bottom: 60px;
 
       p {
         font-weight: 100;
@@ -355,27 +391,134 @@ nav {
     margin: 40px;
     .formLeft {
       width: 500px;
-      height: 1000px;
       display: flex;
       flex-direction: column;
       gap: 40px;
       .pickup {
-        height: 300px;
+        height: 400px;
         background-color: $background;
         border-radius: 15px;
+        padding: 38px;
       }
       .payment {
-        height: 300px;
         background-color: $background;
         border-radius: 15px;
+        padding: 38px;
+      }
+      .cardItem {
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+        font-size: 18px;
+        .icon {
+          width: 30px;
+        }
       }
     }
 
     .formRight {
       width: 500px;
-      height: 1000px;
       background-color: $background;
       border-radius: 15px;
+      padding: 38px;
+
+      .orderDish {
+        display: flex;
+        padding: 10px;
+        justify-content: space-between;
+        align-items: center;
+        .dishName {
+          font-size: 18px;
+        }
+        img {
+          width: 150px;
+        }
+        .dishCount {
+          margin: 5px;
+          border-radius: 50px;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          gap: 10px;
+          .minus {
+            width: 35px;
+            height: 35px;
+            border: solid 1px black;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .plus {
+            width: 35px;
+            height: 35px;
+            border: solid 1px black;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+
+        .dishPrice {
+          margin-left: 30px;
+        }
+      }
+
+      .price {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 18px;
+
+        .priceItem {
+          display: flex;
+          justify-content: space-between;
+        }
+        #total {
+          font-weight: bold;
+        }
+      }
+
+      .placeOrderBtn {
+        background-color: $sweetgreen;
+        height: 50px;
+        color: white;
+        margin: 30px 0;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .placeOrderBtn:hover {
+        background-color: #006858;
+        cursor: pointer;
+      }
+
+      .disclaimer {
+        text-align: left;
+      }
     }
+
+    .cardTitle {
+      font-size: 20px;
+      text-align: left;
+    }
+  }
+}
+
+.newPage {
+  padding: 130px 0;
+  min-height: 100vh;
+  height: 100%;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }

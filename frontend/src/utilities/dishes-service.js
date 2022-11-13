@@ -14,3 +14,17 @@ export async function getOneDish(category, id) {
   const response = await dishesAPI.getOneDish(category, id);
   return response;
 }
+
+export async function createOneDish(dishData) {
+  // Make the network request
+  const response = await dishesAPI.createOneDish(dishData);
+  // Baby step by returning whatever is sent back by the server
+  return response;
+}
+
+export async function deleteDish(id) {
+  // Make the network request
+  const response = await dishesAPI.deleteDish(id);
+  // Baby step by returning whatever is sent back by the server
+  return response;
+}

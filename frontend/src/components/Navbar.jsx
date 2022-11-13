@@ -11,13 +11,14 @@ import Dropdown from "react-bootstrap/Dropdown";
 const Navbar = ({ user, setUser, setPage, page, cart }) => {
   // console.log(user);
   // Create a function responsible for loggin the user out
-  const handleLogOut = () => {
+  const handleLogOut = (e) => {
     // Call the logout function
     userService.logOut();
 
     // Set the user back to null
     setUser(null);
   };
+
   return (
     <nav>
       <div className="logo">
@@ -92,21 +93,30 @@ const Navbar = ({ user, setUser, setPage, page, cart }) => {
       </div>
 
       <div className="navRight">
-        <div className="cart">
-          <Link
-            style={{ textDecoration: "none", color: "black" }}
-            to="/checkout"
-          >
-            <img
-              className="cartImg"
-              src="https://webiconspng.com/wp-content/uploads/2016/11/bag_basket_buy_cart_luggage_shopping_suitcase_icon_1540167.png"
-              alt=""
-            />
-          </Link>
-          <div className="cartCount">
-            {Object.values(cart).reduce((a, b) => a + b, 0)}
-          </div>
-        </div>
+        {user && user.currentUser.isAdmin ? (
+          <>
+            <div className="orderCenterBtn">Orders</div>
+          </>
+        ) : (
+          <>
+            <div className="cart">
+              <Link
+                style={{ textDecoration: "none", color: "black" }}
+                to="/checkout"
+              >
+                <img
+                  className="cartImg"
+                  src="https://webiconspng.com/wp-content/uploads/2016/11/bag_basket_buy_cart_luggage_shopping_suitcase_icon_1540167.png"
+                  alt=""
+                />
+              </Link>
+              <div className="cartCount">
+                {Object.values(cart).reduce((a, b) => a + b.quantity, 0)}
+              </div>
+            </div>
+          </>
+        )}
+
         <span style={{ paddingLeft: "10px" }}>
           {user ? user.newUser?.name || user.currentUser?.name : ""}
         </span>

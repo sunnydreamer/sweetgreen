@@ -3,10 +3,11 @@ import React, { useState } from "react";
 
 // ADDITIONAL IMPORTS
 import { signUp } from "../utilities/users-service";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // CREATE COMPONENT
 const SignUpForm = ({ setUser }) => {
+  const navigate = useNavigate();
   // Create different state for the signup component
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -51,8 +52,8 @@ const SignUpForm = ({ setUser }) => {
       const user = await signUp(formData);
 
       // Log the data to the console
-      console.log(user);
       setUser(user.data);
+      navigate("/");
     } catch (error) {
       console.log(error);
       setError("Sign Up Failed - Try Again");

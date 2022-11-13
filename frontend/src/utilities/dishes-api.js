@@ -35,3 +35,32 @@ export async function getOneDish(category, id) {
     throw new Error("Invalid");
   }
 }
+
+export async function createOneDish(dishData) {
+  const res = await fetch(BASE_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(dishData),
+  });
+
+  // Check if request was successful
+  if (res.ok) {
+    return res;
+  } else {
+    throw new Error("Invalid Create");
+  }
+}
+
+export async function deleteDish(id) {
+  const res = await fetch(`${BASE_URL}/${id}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    // body: JSON.stringify(dishData),
+  });
+
+  if (res.ok) {
+    return res;
+  } else {
+    throw new Error("Invalid Create");
+  }
+}

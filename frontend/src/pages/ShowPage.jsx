@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getOneDish } from "../utilities/dishes-service";
 
-function ShowPage({ setCart, cart }) {
+function ShowPage({ setCart, cart, page, setPage }) {
   const { id } = useParams();
   const { category } = useParams();
   const [dish, setDish] = useState({});
@@ -75,11 +75,23 @@ function ShowPage({ setCart, cart }) {
             id="cart"
             onClick={() => {
               if (cart[dish._id] !== undefined) {
-                setCart({ ...cart, [dish._id]: cart[dish._id] + quantity });
+                setCart((cart) => {
+                  cart[dish._id]["quantity"] += quantity;
+                  return cart;
+                });
+                page === true ? setPage(false) : setPage(true);
               } else {
-                setCart({ ...cart, [dish._id]: quantity });
+                setCart({
+                  ...cart,
+                  [dish._id]: {
+                    id: dish._id,
+                    name: dish.name,
+                    quantity: quantity,
+                    img: dish.picture,
+                    price: dish.price,
+                  },
+                });
               }
-              console.log(cart);
             }}
           >
             Add to Bag

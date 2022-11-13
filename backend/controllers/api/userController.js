@@ -8,18 +8,18 @@ const User = require("./../../models/userModel");
 exports.createUser = async (request, response) => {
   try {
     // Create new user
-    const newUser = await User.create({
+    const currentUser = await User.create({
       name: request.body.name,
       email: request.body.email,
       password: request.body.password,
     });
 
     // Remove password from output
-    newUser.password = undefined;
+    currentUser.password = undefined;
 
     // Create token
     const token = await jwt.sign(
-      { id: newUser._id },
+      { id: currentUser._id },
       process.env.JWT_SECRET_KEY,
       {
         expiresIn: process.env.JWT_EXPIRATION_DATE,
@@ -30,7 +30,7 @@ exports.createUser = async (request, response) => {
     response.status(201).json({
       status: "success",
       data: {
-        newUser,
+        currentUser,
         token,
       },
     });

@@ -6,13 +6,53 @@ exports.seedDish = async (request, response) => {
   try {
     const newDish = await Dish.insertMany(dishData.data);
 
-    const newAddOn = await Dish.find().populate("ingredients");
+    response.status(201).json({
+      status: "success",
+      data: {
+        newDish,
+      },
+    });
+  } catch (error) {
+    response.status(500).json({
+      status: "error",
+      error: error,
+    });
+  }
+};
+
+exports.createOneDish = async (request, response) => {
+  try {
+    const newDish = await Dish.create({
+      name: request.body.name,
+      picture: request.body.picture,
+      category: request.body.category,
+      description: request.body.description,
+      cal: request.body.cal,
+      price: request.body.price,
+    });
 
     response.status(201).json({
       status: "success",
       data: {
         newDish,
-        newAddOn,
+      },
+    });
+  } catch (error) {
+    response.status(500).json({
+      status: "error",
+      error: error,
+    });
+  }
+};
+
+exports.deleteDish = async (request, response) => {
+  try {
+    const deletedDish = await Dish.findByIdAndRemove(request.params.id);
+
+    response.status(201).json({
+      status: "success",
+      data: {
+        deletedDish,
       },
     });
   } catch (error) {

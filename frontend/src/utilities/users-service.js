@@ -11,6 +11,8 @@ export async function signUp(userData) {
   localStorage.setItem("data", JSON.stringify(data));
 
   // Baby step by returning whatever is sent back by the server
+
+  console.log(response);
   return response;
 }
 

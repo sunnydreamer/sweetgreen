@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { getCategory } from "../utilities/dishes-service";
-import { Link, useParams } from "react-router-dom";
+import { getCategory, deleteDish } from "../utilities/dishes-service";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
-function CategoryPage({ page }) {
+function CategoryPage({ page, user, setPage }) {
+  const navigate = useNavigate();
   const { category } = useParams();
   const pageName = category[0].toUpperCase() + category.slice(1);
   const [dishes, setDishes] = useState({ list: [] });
@@ -16,6 +17,14 @@ function CategoryPage({ page }) {
       list: alldishes.data.dishes,
     });
   };
+
+  const deleteOneDish = async (id) => {
+    await deleteDish(id);
+    page === true ? setPage(false) : setPage(true);
+
+    // maybe redirect
+  };
+
   useEffect(() => {
     getAllDishes();
   }, [page]);
@@ -23,22 +32,36 @@ function CategoryPage({ page }) {
   const dishList = dishes.list
     ? dishes.list.map((element, i) => {
         return (
-          <Link
-            style={{ textDecoration: "none", color: "black" }}
-            to={`/${category}/${element._id}`}
-            key={i}
-          >
-            <div className="itemCard">
-              <div className="itemImgContainer">
-                <img src={element.picture} alt="" className="itemImg" />
-              </div>
-              <div className="itemName"> {element.name}</div>
-              <div className="itemDescription">{element.description}</div>
-              <div className="infoContainer">
-                ${element.price} - {element.cal}cal
-              </div>
+          <>
+            <div className="itemCard" key={i}>
+              <Link
+                style={{ textDecoration: "none", color: "black" }}
+                to={`/${category}/${element._id}`}
+              >
+                <div className="itemImgContainer">
+                  <img src={element.picture} alt="" className="itemImg" />
+                </div>
+                <div className="itemName"> {element.name}</div>
+                <div className="itemDescription">{element.description}</div>
+                <div className="infoContainer">
+                  ${element.price} - {element.cal}cal
+                </div>
+              </Link>
+              {user && user.currentUser.isAdmin ? (
+                <div
+                  className="deleteBtn"
+                  onClick={() => {
+                    deleteOneDish(element._id);
+                    navigate(`/${category}`);
+                  }}
+                >
+                  DELETE
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
-          </Link>
+          </>
         );
       })
     : [];
@@ -46,7 +69,28 @@ function CategoryPage({ page }) {
   return (
     <div className="categoryPage">
       <div className="pageTitle">{pageName}</div>
-      <div className="itemCards">{dishList}</div>
+      <div className="itemCards">
+        {user && user.currentUser.isAdmin ? (
+          <Link
+            style={{ textDecoration: "none", color: "black" }}
+            to={`/${category}/new`}
+          >
+            <div className="itemCard" id="addDish">
+              <div className="itemImgContainer">
+                <div className="itemName">Add Dish</div>
+                <img
+                  src="https://cdn.icon-icons.com/icons2/1206/PNG/512/1491254405-plusaddmoredetail_82972.png"
+                  alt=""
+                  className="addImg"
+                />
+              </div>
+            </div>
+          </Link>
+        ) : (
+          <></>
+        )}
+        {dishList}
+      </div>
     </div>
   );
 }

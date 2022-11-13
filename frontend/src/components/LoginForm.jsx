@@ -3,10 +3,11 @@ import React, { useState } from "react";
 
 // ADDITIONAL IMPORTS
 import { login } from "../utilities/users-service";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // CREATE COMPONENT
 const LoginForm = ({ setUser }) => {
+  const navigate = useNavigate();
   // Create different state variables
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,6 +31,8 @@ const LoginForm = ({ setUser }) => {
 
       // Add the user to state
       setUser(user.data);
+
+      navigate("/");
     } catch (error) {
       setError(error.message);
     }
