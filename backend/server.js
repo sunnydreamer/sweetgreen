@@ -59,10 +59,7 @@ app.all("*", (request, response) => {
   response.send("Undefined route");
 });
 
-// CREATE A PORT TO LISTEN FOR REQUEST/RESPONSE CYCLE
-const port = 5000;
-
 // LISTEN FOR CYCLE
-app.listen(port, () => {
-  console.log(`Server started on port ${port}...`);
+app.listen(process.env.PORT || 5000, () => {
+  console.log(`Server started on port ${process.env.PORT}...`);
 });
