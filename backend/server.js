@@ -48,14 +48,7 @@ app.use(morgan("dev"));
 
 app.use(express.json());
 
-app.use(
-  cors({
-    origin: [
-      "https://localhost:3000",
-      "https://sweetgreen-frontend.onrender.com",
-    ],
-  })
-);
+app.use(cors());
 
 // app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 // app.use(express.static(path.join(__dirname, "public")));

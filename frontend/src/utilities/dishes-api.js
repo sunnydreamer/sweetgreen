@@ -1,4 +1,4 @@
-const BASE_URL = "/api/dishes";
+const BASE_URL = "https://sg-66bq.onrender.com/api/dishes";
 
 export async function allDishes() {
   const res = await fetch(BASE_URL, {
