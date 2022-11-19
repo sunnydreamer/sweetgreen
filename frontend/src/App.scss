@@ -8,6 +8,7 @@ $sweetgreen: #00473c;
 $card: #e8dcc6;
 $hoverCard: #e4d5ba;
 $blue: #d8e5d6;
+
 *,
 *:before,
 *:after {
@@ -466,6 +467,7 @@ nav {
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
           }
 
           .plus {
@@ -476,6 +478,7 @@ nav {
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
           }
         }
 
