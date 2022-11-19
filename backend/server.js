@@ -10,6 +10,9 @@ const morgan = require("morgan");
 // IMPORT FAVICON
 const favicon = require("serve-favicon");
 
+// IMPORT CORS
+const cors = require("cors");
+
 // IMPORT DOTENV MODULE TO CONNECT TO OUR CONFIGURATION FILE
 const dotenv = require("dotenv");
 
@@ -44,6 +47,15 @@ const app = express();
 app.use(morgan("dev"));
 
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: [
+      "https://localhost:3000",
+      "https://sweetgreen-frontend.onrender.com",
+    ],
+  })
+);
 
 // app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 // app.use(express.static(path.join(__dirname, "public")));
